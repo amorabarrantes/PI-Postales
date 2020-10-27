@@ -1,0 +1,1 @@
+ C:/MinGW/lib/libsfml-graphics-d.a C:/MinGW/lib/libsfml-audio-d.a C:/MinGW/lib/libsfml-window-d.a C:/MinGW/lib/libsfml-system-d.a -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

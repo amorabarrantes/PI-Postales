@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/ExtremeTech/CLionProjects/Proyecto#1/main.c
+SFML/Window.h
+-
+SFML/Graphics.h
+-
+stdio.h
+-
+

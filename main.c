@@ -10,18 +10,18 @@ sfImage* obtenerImagen(char* ruta){
 }
 
 int comprobacion(sfImage* imagenFile){
-
     sfVector2u sizeImagen;
     sizeImagen = sfImage_getSize(imagenFile);
     unsigned int x = sizeImagen.x;
     unsigned int y = sizeImagen.y;
 
-    if (x<1000 && x>100 && y<1000 && y>100){
-        printf("1\n");
+    if (x<1000 && x>200 && y<1000 && y>200){
         return 1;
 
-    }else{
-        printf("0\n");
+    }else if(x<200 && y<200){
+        return 2;
+    }
+    else{
         return 0;
     }
 }
@@ -179,6 +179,8 @@ void guardarImagen(sfImage* imagenFile, sfText* texto1, sfText* texto2, char* ru
 
 
 
+    }else if(resultadoComprobacion == 2){
+        printf("La imagen no se pudo cargar, debido a que la resolucion tiene muy pocos pixeles\n");
     }
     else{
         //0 Representa que esa imagen no esta permitida, por lo cual pasamos al resize.
@@ -190,7 +192,7 @@ void guardarImagen(sfImage* imagenFile, sfText* texto1, sfText* texto2, char* ru
         int dimensionX = (int)sizeImagenResized.width;
         int dimensionY = (int)sizeImagenResized.height;
 
-        printf("Dimension X: %i, Dimension Y: %i",dimensionX, dimensionY);
+        printf("La imagen tenia demasiados pixeles, se procede a redimensionar y quedo en: Dimension X: %i, Dimension Y: %i \n",dimensionX, dimensionY);
 
         //Guardamos la imagen
         sfRenderTexture *RenderGuardado = sfRenderTexture_create(dimensionX,dimensionY,sfFalse);
@@ -208,21 +210,26 @@ void guardarImagen(sfImage* imagenFile, sfText* texto1, sfText* texto2, char* ru
 
 
 int main() {
-    sfImage* imagen1 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\imagen1.jpg");
-    sfText * texto1 = obtenerTexto("Memingo",4,1,1, 4, imagen1);
-    sfText * texto2 = obtenerTexto("Fino",4,1,3, 4, imagen1);
-    guardarImagen(imagen1,texto1,texto2,"C:\\Users\\ExtremeTech\\Desktop\\prueba1.jpg");
+    sfImage* imagen1 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\short.png");
+    sfText * texto1 = obtenerTexto("Memingo",4,1,2, 4, imagen1);
+    sfText * texto2 = obtenerTexto("Fino",4,2,1, 4, imagen1);
+    guardarImagen(imagen1,texto1,texto2,"C:\\Users\\ExtremeTech\\Desktop\\short.png");
 
-    sfImage* imagen2 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\imagen2.jpg");
-    sfText * texto3 = obtenerTexto("El",4,1,1, 4, imagen2);
-    sfText * texto4 = obtenerTexto("Carro",4,1,3, 4, imagen2);
-    guardarImagen(imagen2,texto3,texto4,"C:\\Users\\ExtremeTech\\Desktop\\prueba2.jpg");
+    sfImage* imagen2 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\abeja.bmp");
+    sfText * texto3 = obtenerTexto("Abeja",4,1,2, 1, imagen2);
+    sfText * texto4 = obtenerTexto("",4,2,3, 4, imagen2);
+    guardarImagen(imagen2,texto3,texto4,"C:\\Users\\ExtremeTech\\Desktop\\abeja.bmp");
 
 
-    sfImage* imagen3 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\imagen3.jpg");
-    sfText * texto5 = obtenerTexto("Universo",4,2,1, 1, imagen3);
-    sfText * texto6 = obtenerTexto("Asombroso",4,2,3, 1, imagen3);
-    guardarImagen(imagen3,texto5,texto6,"C:\\Users\\ExtremeTech\\Desktop\\prueba3.jpg");
+    sfImage* imagen3 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\universo.jpg");
+    sfText * texto5 = obtenerTexto("Universo",3,3,1, 2, imagen3);
+    sfText * texto6 = obtenerTexto("Asombroso",4,4,3, 3, imagen3);
+    guardarImagen(imagen3,texto5,texto6,"C:\\Users\\ExtremeTech\\Desktop\\universo.jpg");
+
+    sfImage* imagen4 = obtenerImagen("C:\\Users\\ExtremeTech\\CLionProjects\\Proyecto#1\\ImagenesDisponibles\\tecnologia.png");
+    sfText * texto7 = obtenerTexto("Tecnologia",2,1,1, 2, imagen4);
+    sfText * texto8 = obtenerTexto("",4,4,2, 3, imagen4);
+    guardarImagen(imagen4,texto7,texto8,"C:\\Users\\ExtremeTech\\Desktop\\tecnologia.png");
 
     return 0;
 }
